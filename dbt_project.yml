@@ -63,4 +63,8 @@ seeds:
     +enabled: true
     +project: my-health-app-424508
     +dataset: diaries
+  bottle_conversion.csv:
+    +enabled: true
+    +project: my-health-app-424508
+    +dataset: diaries
     

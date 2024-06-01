@@ -12,14 +12,18 @@ sources:
               - unique
               - not_null
 
-      # - name: water_raw
-      #   columns:
-      #     - names: user_id
-      #       tests: 
-      #         - not_null
-      #         - relationships:
-      #           to: source('diary_data','users_raw')
-      #           field: user_id
+      - name: water_raw
+        columns:
+          - name: user_id
+            data_tests: 
+              - not_null
+              - relationships:
+                  to: ref('users_raw') # update later
+                  field: user_id
+          - name: bottle_unit
+            tests:
+              - accepted_values:
+                  values: ['ml', 'l', 'floz']
 
       - name: sleep_raw
         columns:
@@ -30,12 +34,12 @@ sources:
                   field: user_id
               - not_null
 
-      # - name: vms_raw
-      #   columns:
-      #     - names: user_id
-      #       tests: 
-      #         - not_null
-      #         - relationships:
-      #           to: source('diary_data','users_raw')
-      #           field: user_id
+      - name: vms_raw
+        columns:
+          - name: user_id
+            data_tests: 
+              - not_null
+              - relationships:
+                  to: ref('users_raw') # update later
+                  field: user_id
   
