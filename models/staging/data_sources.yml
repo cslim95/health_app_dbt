@@ -1,0 +1,41 @@
+version: 2
+
+sources:
+  - name: diary_data
+    project: my-health-app-424508
+    dataset: diaries
+    tables: 
+      - name: users_raw
+        columns: 
+          - name: user_id
+            data_tests:
+              - unique
+              - not_null
+
+      # - name: water_raw
+      #   columns:
+      #     - names: user_id
+      #       tests: 
+      #         - not_null
+      #         - relationships:
+      #           to: source('diary_data','users_raw')
+      #           field: user_id
+
+      - name: sleep_raw
+        columns:
+          - name: user_id
+            data_tests:
+              - relationships:
+                  to: ref('users_raw') # update later
+                  field: user_id
+              - not_null
+
+      # - name: vms_raw
+      #   columns:
+      #     - names: user_id
+      #       tests: 
+      #         - not_null
+      #         - relationships:
+      #           to: source('diary_data','users_raw')
+      #           field: user_id
+  

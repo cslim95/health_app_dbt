@@ -47,7 +47,19 @@ models:
 # down the line.
 
 seeds:
-  water.csv:
+  water_raw.csv:
+    +enabled: true
+    +project: my-health-app-424508
+    +dataset: diaries
+  sleep_raw.csv:
+    +column_types:
+      bedtime: TIME
+      sleeptime: TIME
+      waketime: TIME
+    +enabled: true
+    +project: my-health-app-424508
+    +dataset: diaries
+  vms_raw.csv:
     +enabled: true
     +project: my-health-app-424508
     +dataset: diaries
