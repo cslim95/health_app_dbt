@@ -1,14 +1,15 @@
 select
     {{
         dbt_utils.generate_surrogate_key([
-            'user_id',
+            'email_address',
             'date'
         ])
     }} AS water_entry_id,
-    user_id,
+    email_address,
+    timestamp,
     date,
-    n_bottles,
-    bottle_size,
-    bottle_unit 
+    number_of_bottles,
+    bottle_volume,
+    bottle_units
 from
-    diaries.water_raw
+    diaries.water_diary_raw

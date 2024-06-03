@@ -1,0 +1,10 @@
+dbt_my_health_app:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: my-health-app-425202
+      dataset: diaries
+      threads: 10 # Must be a value of 1 or greater
+      keyfile: /home/cslim12/DataEngineering/HomeProjects/MyHealthApp/dbt-my_health_app_auth.json

@@ -2,44 +2,44 @@ version: 2
 
 sources:
   - name: diary_data
-    project: my-health-app-424508
+    project: my-health-app-425202
     dataset: diaries
     tables: 
-      - name: users_raw
-        columns: 
-          - name: user_id
-            data_tests:
-              - unique
-              - not_null
+      # - name: users_raw
+      #   columns: 
+      #     - name: user_id
+      #       data_tests:
+      #         - unique
+      #         - not_null
 
-      - name: water_raw
+      - name: water_diary_raw
         columns:
-          - name: user_id
+          - name: email_address
             data_tests: 
               - not_null
-              - relationships:
-                  to: ref('users_raw') # update later
-                  field: user_id
+              # - relationships:
+              #     to: ref('users_raw') # update later
+              #     field: user_id
           - name: bottle_unit
-            tests:
-              - accepted_values:
-                  values: ['ml', 'l', 'floz']
-
-      - name: sleep_raw
-        columns:
-          - name: user_id
             data_tests:
-              - relationships:
-                  to: ref('users_raw') # update later
-                  field: user_id
+              - accepted_values:
+                  values: ['millilitres', 'litres', 'fluid oz']
+
+      - name: sleep_diary_raw
+        columns:
+          - name: email_address
+            data_tests:
+              # - relationships:
+              #     to: ref('users_raw') # update later
+              #     field: user_id
               - not_null
 
-      - name: vms_raw
-        columns:
-          - name: user_id
-            data_tests: 
-              - not_null
-              - relationships:
-                  to: ref('users_raw') # update later
-                  field: user_id
+      # - name: vms_raw
+      #   columns:
+      #     - name: user_id
+      #       data_tests: 
+      #         - not_null
+      #         - relationships:
+      #             to: ref('users_raw') # update later
+      #             field: user_id
   

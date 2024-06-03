@@ -3,7 +3,7 @@
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
 name: 'dbt_my_health_app'
-version: '1.0.0'
+version: '1.0.1'
 
 # This setting configures which "profile" dbt uses for this project.
 profile: 'dbt_my_health_app'
@@ -34,37 +34,21 @@ models:
     # Config indicated by + and applies to all files under models/example/
     staging:
       +materialized: view
-      project: my-health-app-424508
+      project: my-health-app-425202
 
     marts:
       +materialized: table
-      project: my-health-app-424508
+      project: my-health-app-425202
 
 
 # Configuring Seeds
-# In this training / testing / proof of concept, we're using seeds to initialise/
-# our data warehouse with data. It may be that there is a better way to do this/
-# down the line.
+# In this iteration of the model, we're using seeds as dimension tables that tend 
+# not to undergo significant change over time - for example a conversion mechanic 
+# to account for users giving their bottle size in metric or imperial units.
 
 seeds:
-  water_raw.csv:
-    +enabled: true
-    +project: my-health-app-424508
-    +dataset: diaries
-  sleep_raw.csv:
-    +column_types:
-      bedtime: TIME
-      sleeptime: TIME
-      waketime: TIME
-    +enabled: true
-    +project: my-health-app-424508
-    +dataset: diaries
-  vms_raw.csv:
-    +enabled: true
-    +project: my-health-app-424508
-    +dataset: diaries
   bottle_conversion.csv:
     +enabled: true
-    +project: my-health-app-424508
+    +project: my-health-app-425202
     +dataset: diaries
     
